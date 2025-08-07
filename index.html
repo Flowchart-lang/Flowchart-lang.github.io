@@ -1,1 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart-Lang (FCL)</title>
+    <!-- Tailwind CSS CDN for minimal styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12 text-gray-800">
 
+    <!-- Main container for content -->
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6 md:p-10 lg:p-12">
+
+        <!-- Header Section -->
+        <header class="mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-center text-indigo-600 mb-2">Flowchart-Lang (FCL)</h1>
+            <p class="text-lg md:text-xl text-center text-gray-500">A simple, experimental programming language designed to mimic the sequential and conditional logic of flowcharts.</p>
+        </header>
+        
+        <!-- Tabbed Navigation -->
+        <nav class="flex justify-center mb-8 border-b-2 border-gray-200">
+            <button id="about-tab" class="py-2 px-4 font-semibold text-lg text-indigo-600 border-b-2 border-indigo-600 focus:outline-none">About FCL</button>
+            <button id="propaganda-tab" class="py-2 px-4 font-semibold text-lg text-gray-500 hover:text-indigo-600 focus:outline-none">FCL Propaganda</button>
+        </nav>
+
+        <!-- Tab Content Container -->
+        <div id="tab-content">
+            <!-- About FCL Content -->
+            <div id="about-content" class="space-y-12">
+                <!-- Introduction Section -->
+                <section class="p-6 bg-indigo-50 rounded-xl">
+                    <p class="text-gray-700 leading-relaxed">
+                        Flowchart-Lang (FCL) is a simple, experimental programming language designed to mimic the sequential and conditional logic of flowcharts. It's interpreted by a Python script and is intended for learning basic programming concepts.
+                    </p>
+                </section>
+
+                <!-- Getting Started Section -->
+                <section class="p-6 bg-white rounded-xl shadow-inner">
+                    <h2 class="text-3xl font-semibold mb-4 text-indigo-700">Getting Started</h2>
+                    <p class="mb-4 text-gray-700">To run FCL programs, you'll need the FCL interpreter and a simple batch file wrapper (for Windows).</p>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-2 text-indigo-600">1. Prerequisites</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-4 text-gray-700">
+                        <li><strong>Python 3</strong>: Ensure you have Python 3 installed on your system. You can download it from <a href="https://www.python.org/" class="text-indigo-500 hover:text-indigo-700 underline">python.org</a>. Make sure it's added to your system's `PATH` during installation.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-2 text-indigo-600">2. Setup</h3>
+                    <h4 class="text-xl font-semibold mt-4 mb-2 text-gray-700">Save the Interpreter</h4>
+                    <p class="mb-4 text-gray-700">Save the interpreter code (typically named `flowchart.py`) to a directory, for example: `C:\FlowchartLang\flowchart.py`</p>
+
+                    <h4 class="text-xl font-semibold mt-4 mb-2 text-gray-700">Create the Launcher (Windows)</h4>
+                    <p class="mb-4 text-gray-700">In the same directory as `flowchart.py`, create a new file named `flowchart.bat`. Open it with a text editor and add the following content:</p>
+                    <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto mb-4">
+                        <pre class="text-sm md:text-base font-mono">
+@echo off
+python "%~dp0flowchart.py" %*
+                        </pre>
+                    </div>
+                    <p class="text-gray-700">This batch file allows you to run your FCL programs directly using the `flowchart` command.</p>
+                </section>
+
+                <!-- How to Code Section -->
+                <section class="p-6 bg-indigo-50 rounded-xl">
+                    <h2 class="text-3xl font-semibold mb-4 text-indigo-700">How to Code in FCL</h2>
+                    <p class="mb-4 text-gray-700">FCL programs are plain text files with the `.fcl` extension. Each command typically occupies its own line.</p>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-2 text-indigo-600">Basic Structure</h3>
+                    <p class="mb-4 text-gray-700">Every FCL program must begin with <code class="bg-gray-100 p-1 rounded font-mono">START</code> and end with <code class="bg-gray-100 p-1 rounded font-mono">END</code>:</p>
+                    <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto mb-4">
+                        <pre class="text-sm md:text-base font-mono">
+START
+    <span class="text-gray-400">-- Your FCL commands go here --</span>
+END
+                        </pre>
+                    </div>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-2 text-indigo-600">Comments</h3>
+                    <p class="text-gray-700">Lines starting with <code class="bg-gray-100 p-1 rounded font-mono">--</code> are treated as comments and ignored by the interpreter.</p>
+                </section>
+
+                <!-- Commands & Extending FCL Section -->
+                <section class="p-6 bg-white rounded-xl shadow-inner">
+                    <h2 class="text-3xl font-semibold mb-4 text-indigo-700">Commands & Extending FCL</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-indigo-600"><code>START</code></h3>
+                            <p class="mb-2 text-gray-700"><strong>Purpose</strong>: Marks the beginning of your program.</p>
+                            <p class="mb-2 text-gray-700"><strong>Usage</strong>: <code class="bg-gray-100 p-1 rounded font-mono">START</code></p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-indigo-600"><code>END</code></h3>
+                            <p class="mb-2 text-gray-700"><strong>Purpose</strong>: Marks the end of your program.</p>
+                            <p class="mb-2 text-gray-700"><strong>Usage</strong>: <code class="bg-gray-100 p-1 rounded font-mono">END</code></p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-indigo-600"><code>PRINT</code></h3>
+                            <p class="mb-2 text-gray-700"><strong>Purpose</strong>: Displays text or the value of a variable to the console.</p>
+                            <p class="mb-2 text-gray-700"><strong>Usage</strong>: <code class="bg-gray-100 p-1 rounded font-mono">PRINT "Your text"</code> or <code class="bg-gray-100 p-1 rounded font-mono">PRINT variableName</code></p>
+                            <p class="mb-2 text-gray-700"><strong>Example</strong>:</p>
+                            <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                                <pre class="text-sm md:text-base font-mono">
+START
+    PRINT "Hello, World!"
+    SET myVariable = "FCL"
+    PRINT myVariable
+END
+                                </pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-indigo-600"><code>SET</code></h3>
+                            <p class="mb-2 text-gray-700"><strong>Purpose</strong>: Assigns a value to a variable.</p>
+                            <p class="mb-2 text-gray-700"><strong>Usage</strong>: <code class="bg-gray-100 p-1 rounded font-mono">SET variableName = value</code></p>
+                            <p class="mb-2 text-gray-700"><strong>Example</strong>:</p>
+                            <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                                <pre class="text-sm md:text-base font-mono">
+SET message = "Welcome!"
+SET age = 30
+SET userAge = age
+                                </pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-indigo-600"><code>INPUT</code></h3>
+                            <p class="mb-2 text-gray-700"><strong>Purpose</strong>: Reads a line of text entered by the user and stores it in the specified variable.</p>
+                            <p class="mb-2 text-gray-700"><strong>Usage</strong>: <code class="bg-gray-100 p-1 rounded font-mono">INPUT variableName</code></p>
+                            <p class="mb-2 text-gray-700"><strong>Example</strong>:</p>
+                            <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                                <pre class="text-sm md:text-base font-mono">
+PRINT "What is your favorite color?"
+INPUT favoriteColor
+PRINT "You like " + favoriteColor + "!"
+                                </pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-indigo-600"><code>IF / ELSE / ENDIF</code></h3>
+                            <p class="mb-2 text-gray-700"><strong>Purpose</strong>: Implements conditional logic. Supported Operators: `==` (equals), `!=` (not equals)</p>
+                            <p class="mb-2 text-gray-700"><strong>Usage</strong>:</p>
+                            <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                                <pre class="text-sm md:text-base font-mono">
+IF variable == value
+    -- Code to execute if condition is true --
+ELSE
+    -- Code to execute if condition is false (optional) --
+ENDIF
+                                </pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-indigo-600"><code>WHILE / ENDWHILE</code></h3>
+                            <p class="mb-2 text-gray-700"><strong>Purpose</strong>: Implements a loop that repeats as long as the condition is true. Supported Operators: `==`, `!=`</p>
+                            <p class="mb-2 text-gray-700"><strong>Usage</strong>:</p>
+                            <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                                <pre class="text-sm md:text-base font-mono">
+WHILE variable != value
+    -- Code to execute in the loop --
+ENDWHILE
+                                </pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-indigo-600"><code>INCREMENT</code></h3>
+                            <p class="mb-2 text-gray-700"><strong>Purpose</strong>: Increases the value of a numeric variable by 1.</p>
+                            <p class="mb-2 text-gray-700"><strong>Usage</strong>: <code class="bg-gray-100 p-1 rounded font-mono">INCREMENT variableName</code></p>
+                            <p class="mb-2 text-gray-700"><strong>Example</strong>: <code class="bg-gray-100 p-1 rounded font-mono">INCREMENT count</code></p>
+                        </div>
+                    </div>
+
+                    <hr class="my-8">
+
+                    <h3 class="text-2xl font-semibold mb-2 text-indigo-600">Extending FCL with Libraries</h3>
+                    <p class="mb-4 text-gray-700">FCL supports custom commands via Python libraries in the `libs/` folder. Libraries are loaded automatically when the interpreter starts. You can use the <code class="bg-gray-100 p-1 rounded font-mono">IMPORT libraryName</code> command for clarity, but it is optional.</p>
+                    <p class="mb-4 text-gray-700"><strong>Example: Math Library</strong></p>
+                    <p class="mb-2 text-gray-700">The included `math.py` library adds an `ADD` command:</p>
+                    <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                        <pre class="text-sm md:text-base font-mono">
+ADD result = a + b
+                        </pre>
+                    </div>
+                </section>
+
+                <!-- Running an FCL Program Section -->
+                <section class="p-6 bg-indigo-50 rounded-xl">
+                    <h2 class="text-3xl font-semibold mb-4 text-indigo-700">Running an FCL Program</h2>
+                    <p class="mb-4 text-gray-700">Once you have `flowchart.py` and `flowchart.bat` set up, and an `.fcl` program file (e.g., `myprogram.fcl`), you can run it from your Command Prompt.</p>
+                    <h3 class="text-2xl font-semibold mt-6 mb-2 text-indigo-600">Steps</h3>
+                    <ol class="list-decimal list-inside space-y-2 mb-4 text-gray-700">
+                        <li>Open <strong>Command Prompt</strong>.</li>
+                        <li>Navigate to your FCL program's directory: <code class="bg-gray-100 p-1 rounded font-mono">cd C:\Path\To\Your\FCL\Files</code></li>
+                        <li>Execute your program: <code class="bg-gray-100 p-1 rounded font-mono">flowchart -r myprogram.fcl</code><br>Or to run it step-by-step: <code class="bg-gray-100 p-1 rounded font-mono">flowchart -s myprogram.fcl</code></li>
+                    </ol>
+                </section>
+
+                <!-- Example Programs Section -->
+                <section class="p-6 bg-white rounded-xl shadow-inner">
+                    <h2 class="text-3xl font-semibold mb-4 text-indigo-700">Example FCL Programs</h2>
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-indigo-600">Basic Example</h3>
+                        <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                            <pre class="text-sm md:text-base font-mono">
+START
+PRINT "Welcome to your first FCL application!"
+PRINT "Please enter your name:"
+INPUT userName
+PRINT "Hello, " + userName + "!"
+
+IF userName == "Alice"
+    PRINT "What a lovely name, Alice!"
+ELSE
+    PRINT "That's a nice name too!"
+ENDIF
+
+SET favoriteNumber = 42
+PRINT "Your favorite number is: " + favoriteNumber
+
+IF favoriteNumber != 100
+    PRINT "That's not 100!"
+ELSE
+    PRINT "Wow, 100 is a great number!"
+ENDIF
+
+PRINT "This is a simple application with conditional logic."
+END
+                            </pre>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2 text-indigo-600">Advanced Example: Fibonacci Sequence</h3>
+                        <p class="mb-2 text-gray-700">This example uses the <code class="bg-gray-100 p-1 rounded font-mono">ADD</code> command from the math library.</p>
+                        <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                            <pre class="text-sm md:text-base font-mono">
+START
+-- This program calculates and prints the Fibonacci sequence.
+SET a = 0
+SET b = 1
+SET n = 10
+SET counter = 0
+IMPORT math
+PRINT "Starting Fibonacci sequence generation..."
+WHILE counter != n
+    PRINT a
+    ADD next_fib = a + b
+    SET a = b
+    SET b = next_fib
+    INCREMENT counter
+ENDWHILE
+PRINT "Fibonacci sequence finished!"
+END
+                            </pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Error Handling Section -->
+                <section class="p-6 bg-indigo-50 rounded-xl">
+                    <h2 class="text-3xl font-semibold mb-4 text-indigo-700">Error Handling</h2>
+                    <ul class="list-disc list-inside space-y-2 mb-4 text-gray-700">
+                        <li>The interpreter will display an error message and exit if you use an undefined variable, invalid syntax, or mismatched control blocks (e.g., missing <code class="bg-gray-100 p-1 rounded font-mono">ENDIF</code> or <code class="bg-gray-100 p-1 rounded font-mono">ENDWHILE</code>).</li>
+                        <li>Custom libraries can also print errors if their commands are used incorrectly.</li>
+                    </ul>
+                </section>
+
+                <!-- Creating Your Own Library Section -->
+                <section class="p-6 bg-white rounded-xl shadow-inner">
+                    <h2 class="text-3xl font-semibold mb-4 text-indigo-700">Creating Your Own Library</h2>
+                    <p class="mb-4 text-gray-700">To add new commands, create a Python file in the `libs/` folder. See `libs/template.py` for a starting point. Each library must define a `commands` dictionary mapping FCL command names to Python functions.</p>
+                </section>
+            </div>
+
+            <!-- FCL Propaganda Content (Hidden by default) -->
+            <div id="propaganda-content" class="space-y-12" style="display: none;">
+                <section class="p-6 bg-indigo-50 rounded-xl text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-4">Why FCL is the ONLY Language You Need.</h2>
+                    <p class="text-xl text-gray-700 leading-relaxed">
+                        Tired of complex syntax, obscure libraries, and hours spent debugging semicolons? FCL is here to save you.
+                    </p>
+                </section>
+
+                <section class="p-6 bg-white rounded-xl shadow-inner">
+                    <h3 class="text-2xl font-semibold mb-4 text-indigo-700">The Power of Simplicity</h3>
+                    <p class="mb-4 text-gray-700">
+                        Forget everything you know about curly braces and complex object-oriented patterns. FCL brings programming back to its roots: simple, sequential logic. Your code reads like a list of instructions, because that's exactly what it is. It's so simple, you'll feel like a genius—and you will be!
+                    </p>
+                    <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                        <pre class="text-sm md:text-base font-mono">
+START
+    -- This code is so simple it explains itself.
+    SET my_life = "simple"
+    PRINT "My code is now " + my_life
+END
+                        </pre>
+                    </div>
+                </section>
+
+                <section class="p-6 bg-indigo-50 rounded-xl">
+                    <h3 class="text-2xl font-semibold mb-4 text-indigo-700">Build Anything, Instantly</h3>
+                    <p class="mb-4 text-gray-700">
+                        With FCL's powerful `IMPORT` feature, you can extend the language with any Python library you can dream of. Need to calculate the Fibonacci sequence? There's a library for that. Want to build a web server? The library is out there (not yet, but you can code it yourself). FCL is the perfect wrapper for your Python-powered dreams.
+                    </p>
+                    <div class="bg-gray-800 text-white rounded-xl p-4 overflow-x-auto">
+                        <pre class="text-sm md:text-base font-mono">
+START
+    IMPORT web_server
+    PRINT "Web server: ONLINE"
+END
+                        </pre>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-gray-500 text-sm">
+            <p>Page created with minimal UI principles using Tailwind CSS.</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript for tab switching -->
+    <script>
+        const aboutTab = document.getElementById('about-tab');
+        const propagandaTab = document.getElementById('propaganda-tab');
+        const aboutContent = document.getElementById('about-content');
+        const propagandaContent = document.getElementById('propaganda-content');
+
+        function showTab(tabToShow) {
+            // Hide all content and remove active styling from tabs
+            aboutContent.style.display = 'none';
+            propagandaContent.style.display = 'none';
+            aboutTab.classList.remove('border-indigo-600', 'text-indigo-600');
+            aboutTab.classList.add('border-gray-200', 'text-gray-500');
+            propagandaTab.classList.remove('border-indigo-600', 'text-indigo-600');
+            propagandaTab.classList.add('border-gray-200', 'text-gray-500');
+            
+            // Show the selected tab and add active styling
+            if (tabToShow === 'about') {
+                aboutContent.style.display = 'block';
+                aboutTab.classList.remove('border-gray-200', 'text-gray-500');
+                aboutTab.classList.add('border-indigo-600', 'text-indigo-600');
+            } else if (tabToShow === 'propaganda') {
+                propagandaContent.style.display = 'block';
+                propagandaTab.classList.remove('border-gray-200', 'text-gray-500');
+                propagandaTab.classList.add('border-indigo-600', 'text-indigo-600');
+            }
+        }
+
+        aboutTab.addEventListener('click', () => showTab('about'));
+        propagandaTab.addEventListener('click', () => showTab('propaganda'));
+
+        // Show the 'About' tab by default on page load
+        showTab('about');
+    </script>
+
+</body>
+</html>
